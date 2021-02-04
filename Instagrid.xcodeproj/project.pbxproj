@@ -13,6 +13,10 @@
 		7B1A4CAF25BB1BE100FD38B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A4CAD25BB1BE100FD38B0 /* Main.storyboard */; };
 		7B1A4CB125BB1BE400FD38B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A4CB025BB1BE400FD38B0 /* Assets.xcassets */; };
 		7B1A4CB425BB1BE400FD38B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A4CB225BB1BE400FD38B0 /* LaunchScreen.storyboard */; };
+		7B1A4CBE25BB226F00FD38B0 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A4CBD25BB226F00FD38B0 /* Delm-Medium.otf */; };
+		7B1A4CC125BB227B00FD38B0 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B1A4CC025BB227A00FD38B0 /* ThirstySoftRegular.otf */; };
+		7BA3B32325CBFD5700C6E48B /* LayoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BA3B32225CBFD5700C6E48B /* LayoutCell.swift */; };
+		7BE7FD4125C1DB9E00CBC7F3 /* LayoutMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		7B1A4CB025BB1BE400FD38B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B1A4CB325BB1BE400FD38B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B1A4CB525BB1BE400FD38B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B1A4CBD25BB226F00FD38B0 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		7B1A4CC025BB227A00FD38B0 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		7BA3B32225CBFD5700C6E48B /* LayoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCell.swift; sourceTree = "<group>"; };
+		7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +65,16 @@
 			isa = PBXGroup;
 			children = (
 				7B1A4CA725BB1BE100FD38B0 /* AppDelegate.swift */,
-				7B1A4CA925BB1BE100FD38B0 /* SceneDelegate.swift */,
-				7B1A4CAB25BB1BE100FD38B0 /* ViewController.swift */,
-				7B1A4CAD25BB1BE100FD38B0 /* Main.storyboard */,
 				7B1A4CB025BB1BE400FD38B0 /* Assets.xcassets */,
-				7B1A4CB225BB1BE400FD38B0 /* LaunchScreen.storyboard */,
+				7B1A4CBD25BB226F00FD38B0 /* Delm-Medium.otf */,
 				7B1A4CB525BB1BE400FD38B0 /* Info.plist */,
+				7B1A4CB225BB1BE400FD38B0 /* LaunchScreen.storyboard */,
+				7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */,
+				7B1A4CAD25BB1BE100FD38B0 /* Main.storyboard */,
+				7B1A4CA925BB1BE100FD38B0 /* SceneDelegate.swift */,
+				7B1A4CC025BB227A00FD38B0 /* ThirstySoftRegular.otf */,
+				7B1A4CAB25BB1BE100FD38B0 /* ViewController.swift */,
+				7BA3B32225CBFD5700C6E48B /* LayoutCell.swift */,
 			);
 			path = Instagrid;
 			sourceTree = "<group>";
@@ -126,6 +138,8 @@
 			files = (
 				7B1A4CB425BB1BE400FD38B0 /* LaunchScreen.storyboard in Resources */,
 				7B1A4CB125BB1BE400FD38B0 /* Assets.xcassets in Resources */,
+				7B1A4CC125BB227B00FD38B0 /* ThirstySoftRegular.otf in Resources */,
+				7B1A4CBE25BB226F00FD38B0 /* Delm-Medium.otf in Resources */,
 				7B1A4CAF25BB1BE100FD38B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +153,8 @@
 			files = (
 				7B1A4CAC25BB1BE100FD38B0 /* ViewController.swift in Sources */,
 				7B1A4CA825BB1BE100FD38B0 /* AppDelegate.swift in Sources */,
+				7BE7FD4125C1DB9E00CBC7F3 /* LayoutMode.swift in Sources */,
+				7BA3B32325CBFD5700C6E48B /* LayoutCell.swift in Sources */,
 				7B1A4CAA25BB1BE100FD38B0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

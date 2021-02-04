@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Instagrid
 //
-//  Created by Symbioz on 22/01/2021.
+//  Created by Julian Morgane on 22/01/2021.
 //
 
 import UIKit
