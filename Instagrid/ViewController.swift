@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import Photos
 
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBOutlet weak var layoutStackView: UIStackView!
     @IBOutlet weak var layout1SelectedImgView: UIImageView!
@@ -20,6 +19,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var layoutMode = LayoutMode.layoutMode1
     
+    var selectedPhoto0 : UIImage?
+    var selectedPhoto1 : UIImage?
+    var selectedPhoto2 : UIImage?
+    var selectedPhoto3 : UIImage?
+    
+    var selectedIndexPath : IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.reloadLayoutStackView()
@@ -27,15 +33,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.layoutCollectionView.layer.borderWidth = 10
     }
     
-    @IBAction func addImgBtn(_ sender: UIButton) {
-        let point = sender.convert(CGPoint.zero, to:self.layoutCollectionView)
-        if let indexPath = self.layoutCollectionView.indexPathForItem(at: point) {
-            let imgController = UIImagePickerController()
-            imgController.sourceType = .photoLibrary
-            imgController.delegate = self
-            self.present(imgController, animated: true, completion: nil)
-        }
-    }
+    
+    // MARK: Select a layout
     
     @IBAction func touchUpLayout1Btn(_ sender: Any) {
         self.layoutMode = LayoutMode.layoutMode1
@@ -48,6 +47,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func touchUpLayout3Btn(_ sender: Any) {
         self.layoutMode = LayoutMode.layoutMode3
         self.reloadLayoutStackView()
+    }
+    
+    // MARK: User want add a photo
+    
+    @IBAction func didTapImgButton(_ sender: UIButton) {
+        let imgController = UIImagePickerController()
+        imgController.sourceType = .photoLibrary
+        imgController.delegate = self
+        imgController.allowsEditing = true
+        self.present(imgController, animated: true, completion: nil)
+        
+        let point = sender.convert(CGPoint.zero, to:self.layoutCollectionView)
+        if let indexPath = self.layoutCollectionView.indexPathForItem(at: point) {
+            self.selectedIndexPath = indexPath
+        }
     }
     
     func reloadLayoutStackView() {
@@ -79,7 +93,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as! LayoutCell
+        
+        if indexPath.item == 0 {
+            cell.selectedPhotoImg.image = self.selectedPhoto0
+            cell.addPhotoImg.isHidden = self.selectedPhoto0 != nil ? true : false
+        } else if indexPath.item == 1 {
+            cell.selectedPhotoImg.image = self.selectedPhoto1
+            cell.addPhotoImg.isHidden = self.selectedPhoto0 != nil ? true : false
+        } else if indexPath.item == 2 {
+            cell.selectedPhotoImg.image = self.selectedPhoto2
+            cell.addPhotoImg.isHidden = self.selectedPhoto0 != nil ? true : false
+        } else if indexPath.item == 3 {
+            cell.selectedPhotoImg.image = self.selectedPhoto3
+            cell.addPhotoImg.isHidden = self.selectedPhoto0 != nil ? true : false
+        }
         return cell
     }
     
@@ -102,15 +130,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return CGSize.init(width: itemSize, height: itemSize)
         }
     }
+
+    
     // MARK: ImagePicker Protocols
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var image : UIImage?
-        if let img = info[.editedImage] as? UIImage {
-            image = img
-        } else if let img = info[.originalImage] as? UIImage {
-            image = img
+        if ((info[UIImagePickerController.InfoKey.editedImage] as? UIImage) != nil) {
+            
         }
     }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
  

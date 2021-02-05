@@ -255,7 +255,7 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTr-03-ouB" userLabel="imgBtn">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <connections>
-                                                                <action selector="addImgBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7c-GV-kwv"/>
+                                                                <action selector="didTapImgButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7c-GV-kwv"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>

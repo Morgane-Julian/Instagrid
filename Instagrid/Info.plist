@@ -69,6 +69,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Need access to your photo for collage</string>
+	<string>Please allow access</string>
 </dict>
 </plist>
