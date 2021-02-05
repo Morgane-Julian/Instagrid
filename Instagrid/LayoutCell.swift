@@ -11,7 +11,6 @@ class LayoutCell: UICollectionViewCell {
     @IBOutlet weak var addPhotoImg: UIImageView!
     @IBOutlet weak var selectedPhotoImg: UIImageView!
     
-    
     override func awakeFromNib() {
         self.backgroundColor = UIColor.init(named: "InstaWhite")
         self.layer.borderColor = UIColor.init(named: "InstaDarkBlue")?.cgColor
