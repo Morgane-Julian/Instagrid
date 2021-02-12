@@ -110,7 +110,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Elle pase en param l'indexPath qui nous permet d'identifier la cellule à dessiner
     // On retourne à la fin de la méthode obligatoirement la cellule personalisée en fonction de l'indexPath
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as! LayoutCell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as? LayoutCell {
             if indexPath.item == 0 {
                 cell.addPhotoImg.isHidden = self.selectedPhoto[0] != nil ? true : false
                 cell.selectedPhotoImg.image = self.selectedPhoto[0]
@@ -126,6 +126,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
             return cell
         }
+        return UICollectionViewCell()
+    }
 
     // Elles est appelée autant de fois qu'il y a de cellules à afficher, elle passe en param l'indexpath pour identifier la cellule nous devons retourner la taille de la cellule pour l'indexPath demandé.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
