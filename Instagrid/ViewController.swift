@@ -7,9 +7,23 @@
 
 import UIKit
 
+// Conversion de la collectionView en image
+extension UIView {
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+
+    @IBOutlet var MainViewGen: UIView!
+    @IBOutlet weak var ArrowLeft: UIImageView!
+    @IBOutlet weak var ArrowUp: UIImageView!
+    @IBOutlet weak var SwipeToShare: UITextField!
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBOutlet weak var layoutStackView: UIStackView!
@@ -18,13 +32,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layout3SelectedImgView: UIImageView!
     
     var layoutMode = LayoutMode.layoutMode1
-    
-        var selectedPhoto0 : UIImage?
-        var selectedPhoto1 : UIImage?
-        var selectedPhoto2 : UIImage?
-        var selectedPhoto3 : UIImage?
-    
+    var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
+    var image : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +44,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
+    
     // MARK: Swipe to share
     @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
-
-        let activityController = UIActivityViewController(activityItems: [self.selectedPhoto0], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
-    
-    
+
     
     // MARK: Select a layout
     @IBAction func touchUpLayout1Btn(_ sender: Any) {
@@ -57,16 +66,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.reloadLayoutStackView()
     }
     
-    // MARK: User want add a photo
-    // IBAction appelée quand on clique sur le bouton d'une cell de la collectionView
-    @IBAction func didTapImgButton(_ sender: UIButton) {
-        // On récupère l'indexPath de la cellule dans lequel le bouton a été cliqué
-        let point = sender.convert(CGPoint.zero, to:self.layoutCollectionView)
-        if let indexPath = self.layoutCollectionView.indexPathForItem(at: point) {
-            // On garde l'indexPath sur lequel on a tapé pour pouvoir l'utiliser dans la methode didFinishPickingMediaWithInfo
-            self.selectedIndexPath = indexPath
-        }
-        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndexPath = indexPath
+
         let imgController = UIImagePickerController()
         imgController.sourceType = .photoLibrary
         imgController.delegate = self
@@ -110,17 +112,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as! LayoutCell
             if indexPath.item == 0 {
-                cell.addPhotoImg.isHidden = self.selectedPhoto0 != nil ? true : false
-                cell.selectedPhotoImg.image = self.selectedPhoto0
+                cell.addPhotoImg.isHidden = self.selectedPhoto[0] != nil ? true : false
+                cell.selectedPhotoImg.image = self.selectedPhoto[0]
             } else if indexPath.item == 1 {
-                cell.selectedPhotoImg.image = self.selectedPhoto1
-                cell.addPhotoImg.isHidden = self.selectedPhoto1 != nil ? true : false
+                cell.selectedPhotoImg.image = self.selectedPhoto[1]
+                cell.addPhotoImg.isHidden = self.selectedPhoto[1] != nil ? true : false
             } else if indexPath.item == 2 {
-                cell.selectedPhotoImg.image = self.selectedPhoto2
-                cell.addPhotoImg.isHidden = self.selectedPhoto2 != nil ? true : false
+                cell.selectedPhotoImg.image = self.selectedPhoto[2]
+                cell.addPhotoImg.isHidden = self.selectedPhoto[2] != nil ? true : false
             } else if indexPath.item == 3 {
-                cell.selectedPhotoImg.image = self.selectedPhoto3
-                cell.addPhotoImg.isHidden = self.selectedPhoto3 != nil ? true : false
+                cell.selectedPhotoImg.image = self.selectedPhoto[3]
+                cell.addPhotoImg.isHidden = self.selectedPhoto[3] != nil ? true : false
             }
             return cell
         }
@@ -159,13 +161,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         
         if self.selectedIndexPath?.item == 0 {
-            self.selectedPhoto0 = image
+            self.selectedPhoto[0] = image
         } else if self.selectedIndexPath?.item == 1 {
-            self.selectedPhoto1 = image
+            self.selectedPhoto[1] = image
         } else if self.selectedIndexPath?.item == 2 {
-            self.selectedPhoto2 = image
+            self.selectedPhoto[2] = image
         } else if self.selectedIndexPath?.item == 3 {
-            self.selectedPhoto3 = image
+            self.selectedPhoto[3] = image
         }
         
         picker.dismiss(animated: true) {
@@ -178,6 +180,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }
+
+
 
 
