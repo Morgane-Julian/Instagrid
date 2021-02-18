@@ -288,7 +288,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-Tb-LpP">
-                                        <rect key="frame" x="187" y="135.33333333333334" width="20" height="18.333333333333343"/>
+                                        <rect key="frame" x="187" y="125.33333333333333" width="20" height="18.333333333333329"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JEg-Tb-LpP" secondAttribute="height" multiplier="1.1" id="DyJ-lJ-hY5"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="sgZ-kc-J4c"/>
@@ -314,6 +314,7 @@
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" id="U1k-IN-mXa"/>
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerX" secondItem="m89-Mo-L4o" secondAttribute="centerX" id="U4W-VR-gDn"/>
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerX" secondItem="m89-Mo-L4o" secondAttribute="centerX" id="bUR-jB-Xnv"/>
+                                    <constraint firstItem="JEg-Tb-LpP" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" id="fYl-bn-dPQ"/>
                                     <constraint firstItem="7HF-QQ-keR" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" constant="35" id="pH1-NY-aoT"/>
                                 </constraints>
                                 <variation key="default">
@@ -321,8 +322,11 @@
                                         <exclude reference="ucR-Zk-2Mz"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="U1k-IN-mXa"/>
                                         <exclude reference="U4W-VR-gDn"/>
+                                        <exclude reference="bUR-jB-Xnv"/>
                                         <exclude reference="FC2-fG-ROS"/>
+                                        <exclude reference="51Z-Le-AUW"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -335,6 +339,8 @@
                                         <include reference="U4W-VR-gDn"/>
                                         <exclude reference="bUR-jB-Xnv"/>
                                         <include reference="FC2-fG-ROS"/>
+                                        <exclude reference="Pmh-XG-95X"/>
+                                        <exclude reference="fYl-bn-dPQ"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -373,9 +379,6 @@
                         <color key="backgroundColor" red="0.71684163810000001" green="0.84211647509999998" blue="0.89544206859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="0hc-hl-Hay">
-                                <variation key="heightClass=compact" constant="0.0"/>
-                            </constraint>
                             <constraint firstItem="uy4-7B-zJ4" firstAttribute="leading" secondItem="nW5-71-E0M" secondAttribute="trailing" constant="288" id="1yo-Ze-elM">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
@@ -451,7 +454,6 @@
                                 <exclude reference="MN1-fJ-GG0"/>
                                 <exclude reference="faw-2S-KQb"/>
                                 <exclude reference="xDE-Ho-bcr"/>
-                                <exclude reference="0hc-hl-Hay"/>
                                 <exclude reference="V1b-r4-Lee"/>
                                 <exclude reference="jbY-go-zcn"/>
                                 <exclude reference="3Dq-q3-6gj"/>
@@ -486,7 +488,6 @@
                                 <exclude reference="cYq-ha-yn4"/>
                                 <include reference="faw-2S-KQb"/>
                                 <exclude reference="xDE-Ho-bcr"/>
-                                <include reference="0hc-hl-Hay"/>
                                 <exclude reference="V1b-r4-Lee"/>
                                 <include reference="jbY-go-zcn"/>
                                 <exclude reference="vDR-OD-c5n"/>

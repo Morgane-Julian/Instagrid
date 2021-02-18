@@ -32,7 +32,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layout3SelectedImgView: UIImageView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var layoutCollectionViewBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var layoutCollectionViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
     
     var layoutMode = LayoutMode.layoutMode1
@@ -108,6 +107,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBAction func touchUpLayout1Btn(_ sender: Any) {
         self.layoutMode = LayoutMode.layoutMode1
         self.reloadLayoutStackView()
+        
     }
     @IBAction func touchUpLayout2Btn(_ sender: Any) {
         self.layoutMode = LayoutMode.layoutMode2
