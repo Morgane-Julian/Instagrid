@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uy4-7B-zJ4" userLabel="layoutStackView">
-                                <rect key="frame" x="20" y="742" width="374" height="120"/>
+                                <rect key="frame" x="20" y="737" width="374" height="120"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XCn-ar-EQi" userLabel="layout1View">
                                         <rect key="frame" x="0.0" y="0.0" width="114.66666666666667" height="120"/>
@@ -124,18 +124,12 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="xB6-al-Ab6" firstAttribute="top" secondItem="uy4-7B-zJ4" secondAttribute="top" id="BhM-8Q-c99"/>
                                     <constraint firstAttribute="width" constant="768" id="Boj-Ff-afk">
                                         <variation key="heightClass=compact" constant="150"/>
                                     </constraint>
                                     <constraint firstItem="S08-uk-UIR" firstAttribute="leading" secondItem="uy4-7B-zJ4" secondAttribute="leading" id="Dvk-Em-5Fa"/>
-                                    <constraint firstAttribute="bottom" secondItem="S08-uk-UIR" secondAttribute="bottom" id="Dwa-2H-Q30"/>
-                                    <constraint firstAttribute="bottom" secondItem="xB6-al-Ab6" secondAttribute="bottom" id="EDp-tX-aTk"/>
                                     <constraint firstAttribute="trailing" secondItem="xB6-al-Ab6" secondAttribute="trailing" id="Fmz-G8-60b"/>
-                                    <constraint firstItem="S08-uk-UIR" firstAttribute="top" secondItem="uy4-7B-zJ4" secondAttribute="top" id="HyY-ip-kEa"/>
-                                    <constraint firstAttribute="bottom" secondItem="XCn-ar-EQi" secondAttribute="bottom" id="IVf-cr-Ev7"/>
                                     <constraint firstItem="S08-uk-UIR" firstAttribute="height" secondItem="xB6-al-Ab6" secondAttribute="height" id="QOw-LI-Vfs"/>
-                                    <constraint firstItem="XCn-ar-EQi" firstAttribute="top" secondItem="uy4-7B-zJ4" secondAttribute="top" id="QdI-rE-jZ8"/>
                                     <constraint firstItem="S08-uk-UIR" firstAttribute="width" secondItem="xB6-al-Ab6" secondAttribute="width" id="X6O-oS-1Sq"/>
                                     <constraint firstItem="XCn-ar-EQi" firstAttribute="height" secondItem="S08-uk-UIR" secondAttribute="height" id="eKQ-EQ-Tbw"/>
                                     <constraint firstItem="XCn-ar-EQi" firstAttribute="width" secondItem="S08-uk-UIR" secondAttribute="width" id="fVF-GB-IEp"/>
@@ -162,27 +156,21 @@
                                     <mask key="constraints">
                                         <include reference="Boj-Ff-afk"/>
                                         <exclude reference="qq9-7c-EFh"/>
-                                        <exclude reference="IVf-cr-Ev7"/>
-                                        <exclude reference="QdI-rE-jZ8"/>
                                         <include reference="eKQ-EQ-Tbw"/>
                                         <exclude reference="fVF-GB-IEp"/>
                                         <include reference="oiD-Bt-6wA"/>
                                         <include reference="uk4-48-NlX"/>
                                         <include reference="Dvk-Em-5Fa"/>
-                                        <exclude reference="Dwa-2H-Q30"/>
-                                        <exclude reference="HyY-ip-kEa"/>
                                         <include reference="QOw-LI-Vfs"/>
                                         <exclude reference="X6O-oS-1Sq"/>
                                         <include reference="qzN-l0-qHS"/>
-                                        <exclude reference="BhM-8Q-c99"/>
-                                        <exclude reference="EDp-tX-aTk"/>
                                         <include reference="Fmz-G8-60b"/>
                                         <include reference="rM9-qN-bBU"/>
                                     </mask>
                                 </variation>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nW5-71-E0M" userLabel="layoutsCollectionView">
-                                <rect key="frame" x="10" y="333" width="394" height="394"/>
+                                <rect key="frame" x="10" y="328" width="394" height="394"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="06A-zW-fF9"/>
@@ -288,10 +276,10 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m89-Mo-L4o">
-                                <rect key="frame" x="10" y="54" width="394" height="274"/>
+                                <rect key="frame" x="10" y="54" width="394" height="269"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HF-QQ-keR" userLabel="swipeToShare">
-                                        <rect key="frame" x="97" y="124.99999999999999" width="200" height="24.333333333333329"/>
+                                        <rect key="frame" x="97" y="156.66666666666666" width="200" height="25.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="dUI-5A-GFt"/>
                                         </constraints>
@@ -300,14 +288,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-Tb-LpP">
-                                        <rect key="frame" x="187" y="108" width="20" height="18"/>
+                                        <rect key="frame" x="187" y="135.33333333333334" width="20" height="18.333333333333343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JEg-Tb-LpP" secondAttribute="height" multiplier="1.1" id="DyJ-lJ-hY5"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="sgZ-kc-J4c"/>
                                         </constraints>
                                     </imageView>
                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="ucR-Zk-2Mz">
-                                        <rect key="frame" x="103.66666666666666" y="127.99999999999999" width="25" height="31.333333333333329"/>
+                                        <rect key="frame" x="103.66666666666666" y="158" width="25" height="31.333333333333343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="7u7-ol-8bx"/>
                                             <constraint firstAttribute="width" secondItem="ucR-Zk-2Mz" secondAttribute="height" multiplier="4:5" id="Rsl-6d-dFb"/>
@@ -317,7 +305,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="JEg-Tb-LpP" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" constant="-20" id="51Z-Le-AUW"/>
+                                    <constraint firstItem="JEg-Tb-LpP" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" constant="10" id="51Z-Le-AUW"/>
                                     <constraint firstItem="7HF-QQ-keR" firstAttribute="top" secondItem="ucR-Zk-2Mz" secondAttribute="bottom" constant="-27.666666666666657" id="FC2-fG-ROS">
                                         <variation key="heightClass=compact" constant="25"/>
                                     </constraint>
@@ -326,7 +314,7 @@
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" id="U1k-IN-mXa"/>
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerX" secondItem="m89-Mo-L4o" secondAttribute="centerX" id="U4W-VR-gDn"/>
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerX" secondItem="m89-Mo-L4o" secondAttribute="centerX" id="bUR-jB-Xnv"/>
-                                    <constraint firstItem="7HF-QQ-keR" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" id="pH1-NY-aoT"/>
+                                    <constraint firstItem="7HF-QQ-keR" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" constant="35" id="pH1-NY-aoT"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
@@ -398,6 +386,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nW5-71-E0M" secondAttribute="bottom" constant="398" id="4gl-np-7Uu">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="veh-1A-xIn" secondAttribute="top" id="6Ji-RK-SuX"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="top" secondItem="m89-Mo-L4o" secondAttribute="bottom" id="7QZ-O1-irM"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="trailing" secondItem="m89-Mo-L4o" secondAttribute="trailing" id="7dW-qp-YTS"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="leading" secondItem="m89-Mo-L4o" secondAttribute="trailing" constant="-178" id="7fj-ZW-yiX">
@@ -435,8 +424,7 @@
                             <constraint firstItem="nW5-71-E0M" firstAttribute="bottom" secondItem="veh-1A-xIn" secondAttribute="bottom" id="ZGz-z3-Dg9"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="top" secondItem="m89-Mo-L4o" secondAttribute="bottom" constant="5" id="ZTo-lx-28u"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m89-Mo-L4o" secondAttribute="trailing" constant="10" id="cYq-ha-yn4"/>
-                            <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="veh-1A-xIn" secondAttribute="top" id="dhd-cu-0WL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uy4-7B-zJ4" secondAttribute="bottom" id="eb8-Bq-6tG">
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uy4-7B-zJ4" secondAttribute="bottom" constant="5" id="eb8-Bq-6tG">
                                 <variation key="heightClass=compact" constant="10"/>
                             </constraint>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="leading" secondItem="uy4-7B-zJ4" secondAttribute="leading" id="fVY-Zt-Af9"/>
@@ -500,7 +488,6 @@
                                 <exclude reference="xDE-Ho-bcr"/>
                                 <include reference="0hc-hl-Hay"/>
                                 <exclude reference="V1b-r4-Lee"/>
-                                <exclude reference="dhd-cu-0WL"/>
                                 <include reference="jbY-go-zcn"/>
                                 <exclude reference="vDR-OD-c5n"/>
                                 <exclude reference="3Dq-q3-6gj"/>
@@ -539,6 +526,9 @@
                         <outlet property="layout2SelectedImgView" destination="RAs-O5-t5Z" id="1vJ-AV-cr9"/>
                         <outlet property="layout3SelectedImgView" destination="fMI-Pl-hQX" id="lae-Gy-qyf"/>
                         <outlet property="layoutCollectionView" destination="nW5-71-E0M" id="ZnX-fW-Fdd"/>
+                        <outlet property="layoutCollectionViewBottomConstraint" destination="BJn-Fc-F3i" id="FVd-pK-Gfo"/>
+                        <outlet property="layoutCollectionViewCenterConstraint" destination="Ri5-KF-RT7" id="qDy-cM-Eff"/>
+                        <outlet property="layoutCollectionViewRightConstraint" destination="WON-hV-Tde" id="WAz-iG-nte"/>
                         <outlet property="layoutStackView" destination="uy4-7B-zJ4" id="kaO-Cs-9zN"/>
                         <outlet property="swipeGesture" destination="8pv-ab-bbM" id="ddW-PA-aJu"/>
                         <outlet property="swipeToShare" destination="7HF-QQ-keR" id="KpJ-nZ-8Lk"/>

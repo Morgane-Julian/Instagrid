@@ -31,6 +31,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layout2SelectedImgView: UIImageView!
     @IBOutlet weak var layout3SelectedImgView: UIImageView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
+    @IBOutlet weak var layoutCollectionViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var layoutCollectionViewRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
     
     var layoutMode = LayoutMode.layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
@@ -62,9 +65,44 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // MARK: Swipe to share
     @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
-            let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
-            present(activityController, animated: true, completion: nil)
+        
+        if UIDevice.current.orientation.isPortrait {
+        self.layoutCollectionViewBottomConstraint.constant = 150
+        UIView.animate(withDuration: 0.5) {
+            self.layoutCollectionView.layer.opacity = 0
+            self.swipeView.layer.opacity = 0
+            self.view.layoutIfNeeded()
         }
+        let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
+        activityController.completionWithItemsHandler = { (type,completed,items,error) in
+            self.layoutCollectionViewBottomConstraint.constant = 15
+            UIView.animate(withDuration: 0.5) {
+                self.layoutCollectionView.layer.opacity = 1
+                self.swipeView.layer.opacity = 1
+                self.view.layoutIfNeeded()
+            }
+        }
+        self.present(activityController, animated: true, completion: nil)
+        }
+        else if UIDevice.current.orientation.isLandscape {
+            self.layoutCollectionViewCenterConstraint.constant = -150
+            UIView.animate(withDuration: 1) {
+                self.layoutCollectionView.layer.opacity = 0
+                self.swipeView.layer.opacity = 0
+                self.view.layoutIfNeeded()
+            }
+            let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
+            activityController.completionWithItemsHandler = { (type,completed,items,error) in
+                self.layoutCollectionViewCenterConstraint.constant = 0
+                UIView.animate(withDuration: 0.5) {
+                    self.layoutCollectionView.layer.opacity = 1
+                    self.swipeView.layer.opacity = 1
+                    self.view.layoutIfNeeded()
+                }
+            }
+            self.present(activityController, animated: true, completion: nil)
+    }
+    }
     
     // MARK: Select a layout
     @IBAction func touchUpLayout1Btn(_ sender: Any) {
