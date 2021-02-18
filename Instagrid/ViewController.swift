@@ -17,24 +17,27 @@ extension UIView {
     }
 }
 
+
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
 
-    @IBOutlet var MainViewGen: UIView!
+    @IBOutlet weak var swipeToShare: UILabel!
     @IBOutlet weak var ArrowLeft: UIImageView!
     @IBOutlet weak var ArrowUp: UIImageView!
-    @IBOutlet weak var SwipeToShare: UITextField!
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBOutlet weak var layoutStackView: UIStackView!
     @IBOutlet weak var layout1SelectedImgView: UIImageView!
     @IBOutlet weak var layout2SelectedImgView: UIImageView!
     @IBOutlet weak var layout3SelectedImgView: UIImageView!
+    @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     
     var layoutMode = LayoutMode.layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
     var image : UIImage?
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +46,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.layoutCollectionView.layer.borderWidth = 10
     }
     
-    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.layoutCollectionView.reloadData()
+        if UIDevice.current.orientation.isLandscape {
+            self.swipeToShare.text = "Swipe left to share"
+            self.ArrowLeft.isHidden = false
+            self.swipeGesture.direction = .left
+        } else {
+            self.swipeToShare.text = "Swipe up to share"
+            self.ArrowUp.isHidden = false
+            self.swipeGesture.direction = .up
+            
+        }
+    }
     
     // MARK: Swipe to share
     @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
-        present(activityController, animated: true, completion: nil)
-    }
-
+            let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
+            present(activityController, animated: true, completion: nil)
+        }
     
     // MARK: Select a layout
     @IBAction func touchUpLayout1Btn(_ sender: Any) {
@@ -111,19 +125,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // On retourne à la fin de la méthode obligatoirement la cellule personalisée en fonction de l'indexPath
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as? LayoutCell {
-            if indexPath.item == 0 {
-                cell.addPhotoImg.isHidden = self.selectedPhoto[0] != nil ? true : false
-                cell.selectedPhotoImg.image = self.selectedPhoto[0]
-            } else if indexPath.item == 1 {
-                cell.selectedPhotoImg.image = self.selectedPhoto[1]
-                cell.addPhotoImg.isHidden = self.selectedPhoto[1] != nil ? true : false
-            } else if indexPath.item == 2 {
-                cell.selectedPhotoImg.image = self.selectedPhoto[2]
-                cell.addPhotoImg.isHidden = self.selectedPhoto[2] != nil ? true : false
-            } else if indexPath.item == 3 {
-                cell.selectedPhotoImg.image = self.selectedPhoto[3]
-                cell.addPhotoImg.isHidden = self.selectedPhoto[3] != nil ? true : false
-            }
+            cell.selectedPhotoImg.image = self.selectedPhoto[indexPath.item]
+            cell.addPhotoImg.isHidden = self.selectedPhoto[indexPath.item] != nil ? true : false
             return cell
         }
         return UICollectionViewCell()
@@ -161,28 +164,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else if let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             image = img
         }
-        
-        if self.selectedIndexPath?.item == 0 {
-            self.selectedPhoto[0] = image
-        } else if self.selectedIndexPath?.item == 1 {
-            self.selectedPhoto[1] = image
-        } else if self.selectedIndexPath?.item == 2 {
-            self.selectedPhoto[2] = image
-        } else if self.selectedIndexPath?.item == 3 {
-            self.selectedPhoto[3] = image
-        }
-        
+        self.selectedPhoto[selectedIndexPath!.item] = image
         picker.dismiss(animated: true) {
             self.layoutCollectionView.reloadData()
         }
     }
     
     
-    // Methode appelée lorsqu'on a cancel le selection/la bilio
+    // Methode appelée lorsqu'on a cancel la selection/la bilio
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     
+    
+    
+   //MARK: Animation de la collectionView
+    func animate() {
+        
+    }
 }
 
 
