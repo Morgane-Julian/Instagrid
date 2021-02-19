@@ -7,17 +7,6 @@
 
 import UIKit
 
-// Conversion de la collectionView en image
-extension UIView {
-    func asImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
-
-
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var layout1Btn: UIButton!
@@ -42,7 +31,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.layoutStackView.reloadInputViews() // Reload la stackView
         self.layoutCollectionView.layer.borderColor = UIColor.init(named: "InstaDarkBlue")?.cgColor
         self.layoutCollectionView.layer.borderWidth = 10
         self.layout1Btn.isSelected = true
@@ -58,41 +46,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.swipeToShare.text = "Swipe up to share"
             self.ArrowUp.isHidden = false
             self.swipeGesture.direction = .up
-            
         }
     }
     
     // MARK: Swipe to share
     @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
         
+        let translateImage = self.layoutCollectionView.asImage()
+        
         if UIDevice.current.orientation.isPortrait {
-        self.layoutCollectionViewBottomConstraint.constant = 150
-        UIView.animate(withDuration: 0.5) {
+            self.layoutCollectionViewBottomConstraint.constant = 150
+            
+        } else {
+            self.layoutCollectionViewCenterConstraint.constant = -150
+        }
+        UIView.animate(withDuration: 0.5, animations: {
             self.layoutCollectionView.layer.opacity = 0
             self.swipeView.layer.opacity = 0
             self.view.layoutIfNeeded()
-        }
-        let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
-        activityController.completionWithItemsHandler = { (type,completed,items,error) in
-            self.layoutCollectionViewBottomConstraint.constant = 15
-            UIView.animate(withDuration: 0.5) {
-                self.layoutCollectionView.layer.opacity = 1
-                self.swipeView.layer.opacity = 1
-                self.view.layoutIfNeeded()
-            }
-        }
-        self.present(activityController, animated: true, completion: nil)
-        }
-        else if UIDevice.current.orientation.isLandscape {
-            self.layoutCollectionViewCenterConstraint.constant = -150
-            UIView.animate(withDuration: 1) {
-                self.layoutCollectionView.layer.opacity = 0
-                self.swipeView.layer.opacity = 0
-                self.view.layoutIfNeeded()
-            }
-            let activityController = UIActivityViewController(activityItems: [self.layoutCollectionView.asImage()], applicationActivities: nil)
+        }, completion: { (finished) in
+            let activityController = UIActivityViewController(activityItems: [translateImage], applicationActivities: nil)
             activityController.completionWithItemsHandler = { (type,completed,items,error) in
-                self.layoutCollectionViewCenterConstraint.constant = 0
+                if UIDevice.current.orientation.isPortrait {
+                    self.layoutCollectionViewBottomConstraint.constant = 15
+                } else {
+                    self.layoutCollectionViewCenterConstraint.constant = 0
+                }
+                
                 UIView.animate(withDuration: 0.5) {
                     self.layoutCollectionView.layer.opacity = 1
                     self.swipeView.layer.opacity = 1
@@ -100,7 +80,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 }
             }
             self.present(activityController, animated: true, completion: nil)
-    }
+        })
     }
     
     // MARK: Select a layout
@@ -217,5 +197,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 }
 
 
-
+// collectionView to  UIImage
+extension UIView {
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
 
