@@ -20,16 +20,16 @@ extension UIView {
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-
+    @IBOutlet weak var layout1Btn: UIButton!
+    @IBOutlet weak var layout2Btn: UIButton!
+    @IBOutlet weak var layout3Btn: UIButton!
+    
     @IBOutlet weak var swipeToShare: UILabel!
     @IBOutlet weak var ArrowLeft: UIImageView!
     @IBOutlet weak var ArrowUp: UIImageView!
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBOutlet weak var layoutStackView: UIStackView!
-    @IBOutlet weak var layout1SelectedImgView: UIImageView!
-    @IBOutlet weak var layout2SelectedImgView: UIImageView!
-    @IBOutlet weak var layout3SelectedImgView: UIImageView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var layoutCollectionViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
@@ -38,14 +38,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
     var image : UIImage?
-
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reloadLayoutStackView()
+        self.layoutStackView.reloadInputViews() // Reload la stackView
         self.layoutCollectionView.layer.borderColor = UIColor.init(named: "InstaDarkBlue")?.cgColor
         self.layoutCollectionView.layer.borderWidth = 10
+        self.layout1Btn.isSelected = true
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -104,19 +104,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     // MARK: Select a layout
-    @IBAction func touchUpLayout1Btn(_ sender: Any) {
-        self.layoutMode = LayoutMode.layoutMode1
-        self.reloadLayoutStackView()
-        
+    @IBAction func didTapLayout1Btn(_ sender: UIButton) {
+        self.layout1Btn.isSelected = true
+        self.layout2Btn.isSelected = false
+        self.layout3Btn.isSelected = false
+        self.layoutMode = .layoutMode1
+        self.layoutCollectionView.reloadData()
     }
-    @IBAction func touchUpLayout2Btn(_ sender: Any) {
-        self.layoutMode = LayoutMode.layoutMode2
-        self.reloadLayoutStackView()
+    
+    @IBAction func didTapLayout2Btn(_ sender: UIButton) {
+        self.layout2Btn.isSelected = true
+        self.layout1Btn.isSelected = false
+        self.layout3Btn.isSelected = false
+        self.layoutMode = .layoutMode2
+        self.layoutCollectionView.reloadData()
     }
-    @IBAction func touchUpLayout3Btn(_ sender: Any) {
-        self.layoutMode = LayoutMode.layoutMode3
-        self.reloadLayoutStackView()
+    
+    @IBAction func didTapLayout3Btn(_ sender: UIButton) {
+        self.layout3Btn.isSelected = true
+        self.layout1Btn.isSelected = false
+        self.layout2Btn.isSelected = false
+        self.layoutMode = .layoutMode3
+        self.layoutCollectionView.reloadData()
     }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
@@ -128,23 +139,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.present(imgController, animated: true, completion: nil)
     }
     
-    // Méthode que l'on a créée pour afficher le layoutMode selectionné parmi les 3 proposés
-    func reloadLayoutStackView() {
-        self.layout1SelectedImgView.isHidden = true
-        self.layout2SelectedImgView.isHidden = true
-        self.layout3SelectedImgView.isHidden = true
-        
-        self.layoutCollectionView.reloadData()
-        
-        switch self.layoutMode {
-        case .layoutMode1 :
-            self.layout1SelectedImgView.isHidden = false
-        case .layoutMode2 :
-            self.layout2SelectedImgView.isHidden = false
-        case .layoutMode3 :
-            self.layout3SelectedImgView.isHidden = false
-        }
-    }
     
     // MARK: CollectionView Protocols
     // Elle est appelée une seule fois et nous demande combien de cellules il y a en tout dans la liste à afficher

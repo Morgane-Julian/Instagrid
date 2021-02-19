@@ -64,19 +64,59 @@
 		7B1A4CA625BB1BE100FD38B0 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				7B1A4CA725BB1BE100FD38B0 /* AppDelegate.swift */,
-				7B1A4CB025BB1BE400FD38B0 /* Assets.xcassets */,
-				7B1A4CBD25BB226F00FD38B0 /* Delm-Medium.otf */,
-				7B1A4CB525BB1BE400FD38B0 /* Info.plist */,
-				7B1A4CB225BB1BE400FD38B0 /* LaunchScreen.storyboard */,
-				7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */,
-				7B1A4CAD25BB1BE100FD38B0 /* Main.storyboard */,
-				7B1A4CA925BB1BE100FD38B0 /* SceneDelegate.swift */,
-				7B1A4CC025BB227A00FD38B0 /* ThirstySoftRegular.otf */,
-				7B1A4CAB25BB1BE100FD38B0 /* ViewController.swift */,
-				7BA3B32225CBFD5700C6E48B /* LayoutCell.swift */,
+				7B56AC0125DFC31A00406249 /* Model */,
+				7B56AC0025DFC2EE00406249 /* Cell */,
+				7BA08F0425DF046400FC7143 /* View */,
+				7BA08F0325DF044E00FC7143 /* Controller */,
+				7BA08F0225DF03E700FC7143 /* Supporting Files */,
 			);
 			path = Instagrid;
+			sourceTree = "<group>";
+		};
+		7B56AC0025DFC2EE00406249 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7BA3B32225CBFD5700C6E48B /* LayoutCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		7B56AC0125DFC31A00406249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BA08F0225DF03E700FC7143 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7B1A4CB225BB1BE400FD38B0 /* LaunchScreen.storyboard */,
+				7B1A4CA925BB1BE100FD38B0 /* SceneDelegate.swift */,
+				7B1A4CA725BB1BE100FD38B0 /* AppDelegate.swift */,
+				7B1A4CB525BB1BE400FD38B0 /* Info.plist */,
+				7B1A4CB025BB1BE400FD38B0 /* Assets.xcassets */,
+				7B1A4CC025BB227A00FD38B0 /* ThirstySoftRegular.otf */,
+				7B1A4CBD25BB226F00FD38B0 /* Delm-Medium.otf */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7BA08F0325DF044E00FC7143 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7B1A4CAB25BB1BE100FD38B0 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7BA08F0425DF046400FC7143 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7B1A4CAD25BB1BE100FD38B0 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,7 +344,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3JFP77RUF;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = "Instagrid/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,7 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3JFP77RUF;
-				INFOPLIST_FILE = Instagrid/Info.plist;
+				INFOPLIST_FILE = "Instagrid/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
