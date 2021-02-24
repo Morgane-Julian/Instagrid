@@ -2,8 +2,7 @@
 //  LayoutCell.swift
 //  Instagrid
 //
-//  Created by Symbioz on 04/02/2021.
-//
+// Created by Julian Morgane on 22/01/2021.//
 
 import UIKit
 

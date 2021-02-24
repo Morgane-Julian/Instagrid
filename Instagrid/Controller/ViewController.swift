@@ -36,6 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.layout1Btn.isSelected = true
     }
     
+    //MARK: Orientation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         self.layoutCollectionView.reloadData()
         if UIDevice.current.orientation.isLandscape {
@@ -121,7 +122,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     // MARK: CollectionView Protocols
-    // Elle est appelée une seule fois et nous demande combien de cellules il y a en tout dans la liste à afficher
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.layoutMode {
         case LayoutMode.layoutMode1, LayoutMode.layoutMode2 :
@@ -131,10 +131,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    // Méthode appelé par le systeme pour redessiner la collectionView
-    // Elle est appelée par le système autant de fois qu'il y a des cellules à afficher
-    // Elle pase en param l'indexPath qui nous permet d'identifier la cellule à dessiner
-    // On retourne à la fin de la méthode obligatoirement la cellule personalisée en fonction de l'indexPath
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as? LayoutCell {
             cell.selectedPhotoImg.image = self.selectedPhoto[indexPath.item]
@@ -144,7 +141,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return UICollectionViewCell()
     }
 
-    // Elles est appelée autant de fois qu'il y a de cellules à afficher, elle passe en param l'indexpath pour identifier la cellule nous devons retourner la taille de la cellule pour l'indexPath demandé.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = collectionView.frame.size.width / 2
         switch self.layoutMode {
@@ -167,9 +163,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     // MARK: ImagePicker Protocols
-    // Méthode appelé par le system lorsqu'on a selectionné une image dans la bibli
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // On se sert de l'indexPath précédemment selectionné pour choisir dans quel attribut mettre l'image selectionnée dans le picker
         var image: UIImage?
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             image = img
@@ -182,22 +176,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    
-    // Methode appelée lorsqu'on a cancel la selection/la bilio
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-   //MARK: Animation de la collectionView
-    func animate() {
-        
     }
 }
 
 
-// collectionView to  UIImage
+//MARK: Extension of UIVew for transform collectionView to UIImage
 extension UIView {
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
