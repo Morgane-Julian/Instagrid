@@ -12,7 +12,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layout1Btn: UIButton!
     @IBOutlet weak var layout2Btn: UIButton!
     @IBOutlet weak var layout3Btn: UIButton!
-    
     @IBOutlet weak var swipeToShare: UILabel!
     @IBOutlet weak var ArrowLeft: UIImageView!
     @IBOutlet weak var ArrowUp: UIImageView!
@@ -26,7 +25,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var layoutMode = LayoutMode.layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
-    var image : UIImage?
     
     
     override func viewDidLoad() {
@@ -170,7 +168,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else if let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             image = img
         }
-        self.selectedPhoto[selectedIndexPath!.item] = image
+        self.selectedPhoto[selectedIndexPath?.item ?? 0] = image
         picker.dismiss(animated: true) {
             self.layoutCollectionView.reloadData()
         }

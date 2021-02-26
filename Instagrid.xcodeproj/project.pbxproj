@@ -64,7 +64,7 @@
 		7B1A4CA625BB1BE100FD38B0 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				7B56AC0125DFC31A00406249 /* Model */,
+				7B37EBBF25E8ED51008AD101 /* Common */,
 				7B56AC0025DFC2EE00406249 /* Cell */,
 				7BA08F0425DF046400FC7143 /* View */,
 				7BA08F0325DF044E00FC7143 /* Controller */,
@@ -73,20 +73,20 @@
 			path = Instagrid;
 			sourceTree = "<group>";
 		};
+		7B37EBBF25E8ED51008AD101 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		7B56AC0025DFC2EE00406249 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				7BA3B32225CBFD5700C6E48B /* LayoutCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		7B56AC0125DFC31A00406249 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7BE7FD4025C1DB9E00CBC7F3 /* LayoutMode.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		7BA08F0225DF03E700FC7143 /* Supporting Files */ = {
@@ -345,6 +345,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3JFP77RUF;
 				INFOPLIST_FILE = "Instagrid/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C3JFP77RUF;
 				INFOPLIST_FILE = "Instagrid/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
