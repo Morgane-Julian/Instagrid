@@ -23,14 +23,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var layoutCollectionViewTopConstraint: NSLayoutConstraint!
     
-    var layoutMode = LayoutMode.layoutMode1
+    var layoutMode : LayoutMode = .layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.layoutCollectionView.layer.borderColor = UIColor.init(named: "InstaDarkBlue")?.cgColor
+        self.layoutCollectionView.layer.borderColor = UIColor(named: "InstaDarkBlue")?.cgColor
         self.layoutCollectionView.layer.borderWidth = 10
         self.layout1Btn.isSelected = true
     }
@@ -60,7 +60,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             self.layoutCollectionViewCenterConstraint.constant = -700
         }
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 1, animations: {
             self.layoutCollectionView.layer.opacity = 0
             self.swipeView.layer.opacity = 0
             self.view.layoutIfNeeded()
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     self.layoutCollectionViewCenterConstraint.constant = 0
                 }
                 
-                UIView.animate(withDuration: 0.5) {
+                UIView.animate(withDuration: 1) {
                     self.layoutCollectionView.layer.opacity = 1
                     self.swipeView.layer.opacity = 1
                     self.view.layoutIfNeeded()
@@ -113,7 +113,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
-
         let imgController = UIImagePickerController()
         imgController.sourceType = .photoLibrary
         imgController.delegate = self
@@ -125,9 +124,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // MARK: CollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.layoutMode {
-        case LayoutMode.layoutMode1, LayoutMode.layoutMode2 :
+        case .layoutMode1, .layoutMode2 :
             return 3
-        case LayoutMode.layoutMode3 :
+        case .layoutMode3 :
             return 4
         }
     }
@@ -145,19 +144,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = collectionView.frame.size.width / 2
         switch self.layoutMode {
-        case LayoutMode.layoutMode1  :
+        case .layoutMode1  :
             if indexPath.item == 0 {
                 return CGSize.init(width: itemSize * 2, height: itemSize)
             } else {
                 return CGSize.init(width: itemSize, height: itemSize)
             }
-        case LayoutMode.layoutMode2 :
+        case .layoutMode2 :
             if indexPath.item == 2 {
                 return CGSize.init(width: itemSize * 2, height: itemSize)
             } else {
                 return CGSize.init(width: itemSize, height: itemSize)
             }
-        case LayoutMode.layoutMode3 :
+        case .layoutMode3 :
             return CGSize.init(width: itemSize, height: itemSize)
         }
     }
@@ -183,13 +182,4 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 }
 
 
-//MARK: Extension of UIVew for transform collectionView to UIImage
-extension UIView {
-    func asImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
 
