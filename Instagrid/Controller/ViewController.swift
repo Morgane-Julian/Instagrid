@@ -13,14 +13,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layout2Btn: UIButton!
     @IBOutlet weak var layout3Btn: UIButton!
     @IBOutlet weak var swipeToShare: UILabel!
-    @IBOutlet weak var ArrowLeft: UIImageView!
-    @IBOutlet weak var ArrowUp: UIImageView!
+    @IBOutlet weak var arrowLeft: UIImageView!
+    @IBOutlet weak var arrowUp: UIImageView!
     @IBOutlet weak var swipeView: UIView!
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBOutlet weak var layoutStackView: UIStackView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var layoutCollectionViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var layoutCollectionViewTopConstraint: NSLayoutConstraint!
     
     var layoutMode = LayoutMode.layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
@@ -39,11 +40,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.layoutCollectionView.reloadData()
         if UIDevice.current.orientation.isLandscape {
             self.swipeToShare.text = "Swipe left to share"
-            self.ArrowLeft.isHidden = false
+            self.arrowLeft.isHidden = false
             self.swipeGesture.direction = .left
         } else {
             self.swipeToShare.text = "Swipe up to share"
-            self.ArrowUp.isHidden = false
+            self.arrowUp.isHidden = false
             self.swipeGesture.direction = .up
         }
     }
@@ -54,10 +55,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let translateImage = self.layoutCollectionView.asImage()
         
         if UIDevice.current.orientation.isPortrait {
-            self.layoutCollectionViewBottomConstraint.constant = 150
-            
+            self.layoutCollectionViewBottomConstraint.constant = 600
+            self.layoutCollectionViewTopConstraint.isActive = false
         } else {
-            self.layoutCollectionViewCenterConstraint.constant = -150
+            self.layoutCollectionViewCenterConstraint.constant = -700
         }
         UIView.animate(withDuration: 0.5, animations: {
             self.layoutCollectionView.layer.opacity = 0
@@ -68,6 +69,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             activityController.completionWithItemsHandler = { (type,completed,items,error) in
                 if UIDevice.current.orientation.isPortrait {
                     self.layoutCollectionViewBottomConstraint.constant = 15
+                    self.layoutCollectionViewTopConstraint.isActive = true
+
                 } else {
                     self.layoutCollectionViewCenterConstraint.constant = 0
                 }

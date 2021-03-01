@@ -386,7 +386,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nW5-71-E0M" secondAttribute="bottom" constant="398" id="4gl-np-7Uu">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
-                            <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="veh-1A-xIn" secondAttribute="top" id="6Ji-RK-SuX"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="top" secondItem="m89-Mo-L4o" secondAttribute="bottom" id="7QZ-O1-irM"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="trailing" secondItem="m89-Mo-L4o" secondAttribute="trailing" id="7dW-qp-YTS"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="leading" secondItem="m89-Mo-L4o" secondAttribute="trailing" constant="-178" id="7fj-ZW-yiX">
@@ -417,6 +416,7 @@
                                 <variation key="heightClass=compact" constant="50"/>
                             </constraint>
                             <constraint firstItem="veh-1A-xIn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SMI-Ld-59f"/>
+                            <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Uii-Vr-zHQ"/>
                             <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="veh-1A-xIn" secondAttribute="bottom" id="V1b-r4-Lee"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="leading" secondItem="m89-Mo-L4o" secondAttribute="trailing" constant="-122.33333333333331" id="WON-hV-Tde">
                                 <variation key="heightClass=compact" constant="5"/>
@@ -518,14 +518,15 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="ArrowLeft" destination="ucR-Zk-2Mz" id="D5u-GE-VRt"/>
-                        <outlet property="ArrowUp" destination="JEg-Tb-LpP" id="D8P-6a-Xpv"/>
+                        <outlet property="arrowLeft" destination="ucR-Zk-2Mz" id="D5u-GE-VRt"/>
+                        <outlet property="arrowUp" destination="JEg-Tb-LpP" id="D8P-6a-Xpv"/>
                         <outlet property="layout1Btn" destination="4vb-EC-NZR" id="W2a-wb-GuM"/>
                         <outlet property="layout2Btn" destination="y8e-BC-xve" id="S85-o9-CPx"/>
                         <outlet property="layout3Btn" destination="FSY-h1-Dl7" id="6fA-5x-CzW"/>
                         <outlet property="layoutCollectionView" destination="nW5-71-E0M" id="ZnX-fW-Fdd"/>
                         <outlet property="layoutCollectionViewBottomConstraint" destination="BJn-Fc-F3i" id="FVd-pK-Gfo"/>
                         <outlet property="layoutCollectionViewCenterConstraint" destination="Ri5-KF-RT7" id="qDy-cM-Eff"/>
+                        <outlet property="layoutCollectionViewTopConstraint" destination="ZTo-lx-28u" id="bwZ-n8-QvD"/>
                         <outlet property="layoutStackView" destination="uy4-7B-zJ4" id="kaO-Cs-9zN"/>
                         <outlet property="swipeGesture" destination="8pv-ab-bbM" id="ddW-PA-aJu"/>
                         <outlet property="swipeToShare" destination="7HF-QQ-keR" id="KpJ-nZ-8Lk"/>
