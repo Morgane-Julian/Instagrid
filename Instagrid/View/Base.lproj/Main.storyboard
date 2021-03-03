@@ -14,6 +14,9 @@
         <array key="Delm-Medium.otf">
             <string>Delm-Medium</string>
         </array>
+        <array key="ThirstySoftRegular.otf">
+            <string>ThirstySoftRegular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--View Controller-->
@@ -137,7 +140,7 @@
                                 </variation>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nW5-71-E0M" userLabel="layoutsCollectionView">
-                                <rect key="frame" x="82" y="333" width="250" height="250"/>
+                                <rect key="frame" x="82" y="343" width="250" height="250"/>
                                 <color key="backgroundColor" systemColor="linkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="LFU-WB-rYY"/>
@@ -186,13 +189,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2t3-15-9a5"/>
                                 </connections>
                             </collectionView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Instagrid" translatesAutoresizingMaskIntoConstraints="NO" id="veh-1A-xIn">
-                                <rect key="frame" x="147" y="44" width="120" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="DlZ-gt-2XB"/>
-                                    <constraint firstAttribute="width" constant="120" id="mBu-9R-zHl"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m89-Mo-L4o">
                                 <rect key="frame" x="5" y="54" width="404" height="140"/>
                                 <subviews>
@@ -213,9 +209,9 @@
                                         </constraints>
                                     </imageView>
                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Left" translatesAutoresizingMaskIntoConstraints="NO" id="ucR-Zk-2Mz">
-                                        <rect key="frame" x="122" y="141" width="25" height="31"/>
+                                        <rect key="frame" x="67" y="115.5" width="15" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="7u7-ol-8bx"/>
+                                            <constraint firstAttribute="width" constant="15" id="7u7-ol-8bx"/>
                                             <constraint firstAttribute="width" secondItem="ucR-Zk-2Mz" secondAttribute="height" multiplier="4:5" id="Rsl-6d-dFb"/>
                                         </constraints>
                                     </imageView>
@@ -245,14 +241,14 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="42v-Co-L4T"/>
-                                        <exclude reference="WOM-P6-iva"/>
-                                        <exclude reference="pY0-2l-5Rs"/>
                                         <exclude reference="1yi-Zk-Ghj"/>
                                         <exclude reference="7jW-T8-KF6"/>
                                         <exclude reference="HzF-9V-9MT"/>
                                         <exclude reference="TjU-xU-Q2d"/>
                                         <exclude reference="dug-7G-w1e"/>
                                         <exclude reference="oV0-5V-eV1"/>
+                                        <exclude reference="WOM-P6-iva"/>
+                                        <exclude reference="pY0-2l-5Rs"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -276,33 +272,39 @@
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="42v-Co-L4T"/>
-                                        <include reference="WOM-P6-iva"/>
-                                        <include reference="pY0-2l-5Rs"/>
                                         <exclude reference="dug-7G-w1e"/>
                                         <exclude reference="oV0-5V-eV1"/>
+                                        <include reference="WOM-P6-iva"/>
+                                        <include reference="pY0-2l-5Rs"/>
                                     </mask>
                                 </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="8pv-ab-bbM" appends="YES" id="F32-K1-eSa"/>
                                 </connections>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qth-GE-9gL" userLabel="Instagrid">
+                                <rect key="frame" x="147.66666666666666" y="44" width="118.66666666666666" height="39"/>
+                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
+                                <color key="textColor" name="InstaWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.71684163810000001" green="0.84211647509999998" blue="0.89544206859999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="m89-Mo-L4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="0jS-b4-9Iq"/>
-                            <constraint firstItem="veh-1A-xIn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="A1d-Nn-e9W"/>
                             <constraint firstItem="uy4-7B-zJ4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Amz-PR-tc1"/>
-                            <constraint firstItem="nW5-71-E0M" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="10" id="B7i-Te-8dI"/>
+                            <constraint firstItem="nW5-71-E0M" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="20" id="B7i-Te-8dI"/>
                             <constraint firstItem="uy4-7B-zJ4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-20" id="B9C-TC-D15"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m89-Mo-L4o" secondAttribute="bottom" constant="10" id="Cux-Pt-ZgP"/>
+                            <constraint firstItem="Qth-GE-9gL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KcA-ke-47a"/>
                             <constraint firstItem="uy4-7B-zJ4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="210" id="RiW-qQ-H0a">
                                 <variation key="heightClass=regular-widthClass=compact" constant="10"/>
                             </constraint>
-                            <constraint firstItem="veh-1A-xIn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a5i-hh-O3V"/>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="leading" secondItem="m89-Mo-L4o" secondAttribute="trailing" constant="5" id="eea-8N-q1l"/>
                             <constraint firstItem="m89-Mo-L4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="gjD-LC-NNv"/>
+                            <constraint firstItem="Qth-GE-9gL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="i3b-Vp-Cgh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m89-Mo-L4o" secondAttribute="trailing" constant="290" id="lTr-xH-7cn">
                                 <variation key="heightClass=regular-widthClass=compact" constant="5"/>
                             </constraint>
@@ -354,7 +356,6 @@
     <resources>
         <image name="Arrow Left" width="3.3333332538604736" height="4.6666665077209473"/>
         <image name="Arrow Up" width="4.6666665077209473" height="3.3333332538604736"/>
-        <image name="Instagrid" width="41.333332061767578" height="13"/>
         <image name="Layout 1" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 2" width="26.666666030883789" height="26.666666030883789"/>
         <image name="Layout 3" width="26.666666030883789" height="26.666666030883789"/>

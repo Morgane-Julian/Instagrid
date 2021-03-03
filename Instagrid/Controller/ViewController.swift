@@ -78,7 +78,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let activityController = UIActivityViewController(activityItems: [translateImage], applicationActivities: nil)
             activityController.completionWithItemsHandler = { (type,completed,items,error) in
                 if UIDevice.current.orientation.isPortrait {
-                    self.layoutCollectionViewCenterConstraint.constant = 0
+                    self.layoutCollectionViewCenterConstraint.constant = 20
                 } else {
                     self.layoutCollectionViewLandscapeConstraint.constant = 0
                     self.layoutCollectionViewLeadingConstraint.isActive = true
