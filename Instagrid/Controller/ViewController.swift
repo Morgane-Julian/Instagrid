@@ -19,14 +19,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layoutCollectionView: UICollectionView!
     @IBOutlet weak var layoutStackView: UIStackView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
-    @IBOutlet weak var layoutCollectionViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
-    @IBOutlet weak var layoutCollectionViewTopConstraint: NSLayoutConstraint!
+            
+    @IBOutlet weak var layoutCollectionViewLandscapeConstraint: NSLayoutConstraint!
     
     var layoutMode : LayoutMode = .layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //MARK: Orientation
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         self.layoutCollectionView.reloadData()
         if UIDevice.current.orientation.isLandscape {
             self.swipeToShare.text = "Swipe left to share"
@@ -55,10 +56,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let translateImage = self.layoutCollectionView.asImage()
         
         if UIDevice.current.orientation.isPortrait {
-            self.layoutCollectionViewBottomConstraint.constant = 600
-            self.layoutCollectionViewTopConstraint.isActive = false
+            self.layoutCollectionViewCenterConstraint.constant = -300
         } else {
-            self.layoutCollectionViewCenterConstraint.constant = -700
+            self.layoutCollectionViewLandscapeConstraint.constant = -500
         }
         UIView.animate(withDuration: 1, animations: {
             self.layoutCollectionView.layer.opacity = 0
@@ -68,11 +68,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let activityController = UIActivityViewController(activityItems: [translateImage], applicationActivities: nil)
             activityController.completionWithItemsHandler = { (type,completed,items,error) in
                 if UIDevice.current.orientation.isPortrait {
-                    self.layoutCollectionViewBottomConstraint.constant = 15
-                    self.layoutCollectionViewTopConstraint.isActive = true
-
-                } else {
                     self.layoutCollectionViewCenterConstraint.constant = 0
+                } else {
+                    self.layoutCollectionViewLandscapeConstraint.constant = 0
                 }
                 
                 UIView.animate(withDuration: 1) {
