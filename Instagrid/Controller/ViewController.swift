@@ -23,6 +23,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             
     @IBOutlet weak var layoutCollectionViewLandscapeConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var layoutCollectionViewLeadingConstraint: NSLayoutConstraint!
+    
+    
+    
+    
+    
+    
+    
     var layoutMode : LayoutMode = .layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
@@ -59,6 +67,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.layoutCollectionViewCenterConstraint.constant = -300
         } else {
             self.layoutCollectionViewLandscapeConstraint.constant = -500
+            self.layoutCollectionViewLeadingConstraint.isActive = false
+
         }
         UIView.animate(withDuration: 1, animations: {
             self.layoutCollectionView.layer.opacity = 0
@@ -71,6 +81,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     self.layoutCollectionViewCenterConstraint.constant = 0
                 } else {
                     self.layoutCollectionViewLandscapeConstraint.constant = 0
+                    self.layoutCollectionViewLeadingConstraint.isActive = true
+
                 }
                 
                 UIView.animate(withDuration: 1) {
