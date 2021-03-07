@@ -194,6 +194,3 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         picker.dismiss(animated: true, completion: nil)
     }
 }
-
-
-
