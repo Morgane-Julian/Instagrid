@@ -190,10 +190,10 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m89-Mo-L4o">
-                                <rect key="frame" x="5" y="54" width="404" height="140"/>
+                                <rect key="frame" x="5" y="54" width="404" height="264"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HF-QQ-keR" userLabel="swipeToShare">
-                                        <rect key="frame" x="102" y="83" width="200" height="24.333333333333329"/>
+                                        <rect key="frame" x="102" y="144.33333333333334" width="200" height="25.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="dUI-5A-GFt"/>
                                         </constraints>
@@ -202,7 +202,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="JEg-Tb-LpP">
-                                        <rect key="frame" x="192" y="61" width="20" height="18"/>
+                                        <rect key="frame" x="192" y="123" width="20" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="JEg-Tb-LpP" secondAttribute="height" multiplier="1.1" id="DyJ-lJ-hY5"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="sgZ-kc-J4c"/>
@@ -222,7 +222,6 @@
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" id="1yi-Zk-Ghj">
                                         <variation key="widthClass=regular" constant="-30"/>
                                     </constraint>
-                                    <constraint firstAttribute="height" constant="140" id="42v-Co-L4T"/>
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerX" secondItem="m89-Mo-L4o" secondAttribute="centerX" id="7jW-T8-KF6"/>
                                     <constraint firstItem="7HF-QQ-keR" firstAttribute="centerX" secondItem="m89-Mo-L4o" secondAttribute="centerX" id="82J-rC-cZg"/>
                                     <constraint firstItem="ucR-Zk-2Mz" firstAttribute="centerY" secondItem="m89-Mo-L4o" secondAttribute="centerY" constant="-25" id="HzF-9V-9MT"/>
@@ -240,7 +239,6 @@
                                         <exclude reference="ucR-Zk-2Mz"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="42v-Co-L4T"/>
                                         <exclude reference="1yi-Zk-Ghj"/>
                                         <exclude reference="7jW-T8-KF6"/>
                                         <exclude reference="HzF-9V-9MT"/>
@@ -271,7 +269,6 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="42v-Co-L4T"/>
                                         <exclude reference="dug-7G-w1e"/>
                                         <exclude reference="oV0-5V-eV1"/>
                                         <include reference="WOM-P6-iva"/>
@@ -283,7 +280,7 @@
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qth-GE-9gL" userLabel="Instagrid">
-                                <rect key="frame" x="147.66666666666666" y="44" width="118.66666666666666" height="39"/>
+                                <rect key="frame" x="148.66666666666666" y="44" width="116.99999999999997" height="35"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" name="InstaWhite"/>
                                 <nil key="highlightedColor"/>
@@ -309,6 +306,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="nW5-71-E0M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pd2-I9-v3V"/>
+                            <constraint firstItem="nW5-71-E0M" firstAttribute="top" secondItem="m89-Mo-L4o" secondAttribute="bottom" constant="25" id="tdm-gB-SS0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uy4-7B-zJ4" secondAttribute="trailing" constant="10" id="wIy-M3-GaK"/>
                         </constraints>
                         <variation key="default">

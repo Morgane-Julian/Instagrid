@@ -20,27 +20,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var layoutStackView: UIStackView!
     @IBOutlet var swipeGesture: UISwipeGestureRecognizer!
     @IBOutlet weak var layoutCollectionViewCenterConstraint: NSLayoutConstraint!
-            
     @IBOutlet weak var layoutCollectionViewLandscapeConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var layoutCollectionViewLeadingConstraint: NSLayoutConstraint!
-    
-    
-    
-    
-    
-    
     
     var layoutMode : LayoutMode = .layoutMode1
     var selectedPhoto : [UIImage?] = [nil, nil, nil, nil]
     var selectedIndexPath : IndexPath?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.layoutCollectionView.layer.borderColor = UIColor(named: "InstaDarkBlue")?.cgColor
         self.layoutCollectionView.layer.borderWidth = 10
         self.layout1Btn.isSelected = true
+        orientationTransition(isLandscape: currentOrientationIsLandscape())
     }
     
     //MARK: Orientation
@@ -58,9 +50,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func currentOrientationIsLandscape() -> Bool {
+        if UIScreen.main.bounds.height > UIScreen.main.bounds.width {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func orientationTransition(isLandscape: Bool) {
+        if isLandscape {
+            self.swipeToShare.text = "Swipe left to share"
+            self.arrowLeft.isHidden = false
+            self.swipeGesture.direction = .left
+        } else {
+            self.swipeToShare.text = "Swipe up to share"
+            self.arrowUp.isHidden = false
+            self.swipeGesture.direction = .up
+        }
+    }
+    
     // MARK: Swipe to share
     @IBAction func didSwipe(_ sender: UISwipeGestureRecognizer) {
-        
         let translateImage = self.layoutCollectionView.asImage()
         
         if UIDevice.current.orientation.isPortrait {
@@ -68,7 +79,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             self.layoutCollectionViewLandscapeConstraint.constant = -500
             self.layoutCollectionViewLeadingConstraint.isActive = false
-
         }
         UIView.animate(withDuration: 1, animations: {
             self.layoutCollectionView.layer.opacity = 0
@@ -82,9 +92,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 } else {
                     self.layoutCollectionViewLandscapeConstraint.constant = 0
                     self.layoutCollectionViewLeadingConstraint.isActive = true
-
                 }
-                
                 UIView.animate(withDuration: 1) {
                     self.layoutCollectionView.layer.opacity = 1
                     self.swipeView.layer.opacity = 1
@@ -119,7 +127,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.layoutMode = .layoutMode3
         self.layoutCollectionView.reloadData()
     }
-
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
@@ -129,7 +136,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         imgController.allowsEditing = true
         self.present(imgController, animated: true, completion: nil)
     }
-    
     
     // MARK: CollectionView Protocols
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -141,7 +147,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LayoutCell", for: indexPath) as? LayoutCell {
             cell.selectedPhotoImg.image = self.selectedPhoto[indexPath.item]
@@ -150,7 +155,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return UICollectionViewCell()
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = collectionView.frame.size.width / 2
         switch self.layoutMode {
@@ -170,7 +175,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             return CGSize.init(width: itemSize, height: itemSize)
         }
     }
-    
     
     // MARK: ImagePicker Protocols
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
