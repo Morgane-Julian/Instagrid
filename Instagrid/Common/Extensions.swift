@@ -7,7 +7,7 @@
 
 import UIKit
 
-//MARK: Extension of UIVew for transform collectionView to UIImage
+//MARK: Extension of UIVew for transform the collectionView to UIImage
 extension UIView {
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)

@@ -11,5 +11,4 @@ enum LayoutMode {
     case layoutMode1
     case layoutMode2
     case layoutMode3
-    
 }
